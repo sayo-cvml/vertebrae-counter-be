@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  detector:
+  backend:
     
     build:
       context: .
@@ -9,9 +9,31 @@ services:
 
     ports:
       - '8000:8000'
-    
-    volumes:
-      - '.:/api'
-    
+
+    env_file: 
+      - .env
+        
     command: ["./activate.sh"]
+
+  # frontend:
+
+
+
+  
+  # subscriber:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+
+  #   env_file: 
+  #     - .env
+    
+  #   volumes:
+  #     - './mydarknet:/api/mydarknet'
+    
+
+  #   restart: "on-failure"
+
+  #   command: python subscriber.py
+    
   
